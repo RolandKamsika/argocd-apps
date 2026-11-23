@@ -1,4 +1,9 @@
 longhorn:
+  # Required for Argo CD: the pre-upgrade hook runs as PreSync, before its
+  # ServiceAccount exists, so the sync hangs forever. See Longhorn GitOps docs.
+  preUpgradeChecker:
+    jobEnabled: false
+
   defaultSettings:
     defaultReplicaCount: 2
     storageMinimalAvailablePercentage: 10
