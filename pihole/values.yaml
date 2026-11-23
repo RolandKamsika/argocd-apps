@@ -1,0 +1,13 @@
+pihole:
+  replicaCount: 1
+
+  DNS1: "8.8.8.8"
+  DNS2: "1.1.1.1"
+
+  adminPassword: "changeme"
+
+  serviceDns:
+    type: NodePort
+
+  ingress:
+    enabled: false

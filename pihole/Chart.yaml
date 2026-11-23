@@ -1,0 +1,9 @@
+apiVersion: v2
+name: pihole
+description: Pi-hole deployment for pi-cluster
+type: application
+version: 1.0.0
+dependencies:
+  - name: pihole
+    version: "2.35.0"
+    repository: https://mojo2600.github.io/pihole-kubernetes/

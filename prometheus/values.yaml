@@ -1,0 +1,21 @@
+kube-prometheus-stack:
+  controller:
+    service:
+      type: NodePort
+    replicaCount: 1
+
+  grafana:
+    replicas: 1
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: grafana
+            topologyKey: kubernetes.io/hostname
+    adminUser: admin
+    adminPassword: Frame-But-Near-Mention-1
+    # admin:
+    #   existingSecret: grafana-secrets
+    #   userKey: admin-user
+    #   passwordKey: admin-password

@@ -1,0 +1,41 @@
+app-template:
+  controllers:
+    sonarr:
+      containers:
+        app:
+          image:
+            repository: ghcr.io/linuxserver/sonarr
+            tag: latest
+          env:
+            PUID: "1000"
+            PGID: "1000"
+            TZ: "Europe/London"
+
+  service:
+    app:
+      controller: sonarr
+      ports:
+        http:
+          port: 8989
+
+  ingress:
+    app:
+      enabled: false
+
+  persistence:
+    config:
+      enabled: true
+      storageClass: longhorn
+      accessMode: ReadWriteOnce
+      persistentVolumeReclaimPolicy: Retain
+      hostPath:
+        path: '/mnt/data'      
+      size: 2Gi
+    media:
+      enabled: true
+      storageClass: longhorn
+      accessMode: ReadWriteOnce
+      persistentVolumeReclaimPolicy: Retain
+      hostPath:
+        path: '/mnt/data'
+      size: 50Gi
