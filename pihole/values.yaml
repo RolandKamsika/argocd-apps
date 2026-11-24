@@ -1,6 +1,9 @@
 pihole:
   replicaCount: 1
 
+  # RWO Longhorn volume: stop the old pod before starting the new one
+  strategyType: Recreate
+
   DNS1: "8.8.8.8"
   DNS2: "1.1.1.1"
 
@@ -11,3 +14,11 @@ pihole:
 
   ingress:
     enabled: false
+
+  # Persist /etc/pihole (gravity DB, settings) on Longhorn
+  persistentVolumeClaim:
+    enabled: true
+    storageClass: longhorn
+    accessModes:
+      - ReadWriteOnce
+    size: 1Gi

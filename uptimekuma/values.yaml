@@ -4,6 +4,13 @@ uptime-kuma:
     
   password: "changeme"
 
+  # Persist data on Longhorn (explicit, rather than relying on the default class)
+  volume:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 4Gi
+    storageClassName: longhorn
+
   # Exposed via templates/route.yaml on the shared Gateway (Gateway API)
   ingress:
     enabled: false
